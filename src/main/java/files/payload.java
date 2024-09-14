@@ -21,5 +21,16 @@ public class payload {
 				+ "}\r\n"
 				+ "";
 	}
+	
+	public static String updatePlace(String placeId) {
+		return "{\r\n"
+				+ "\"place_id\":\""+placeId+"\",\r\n"
+				+ "\"address\":\"70 Summer walk, USA\",\r\n"
+				+ "\"key\":\"qaclick123\"\r\n"
+				+ "}\r\n"
+				+ "";
+	}
+	
+	
 
 }
