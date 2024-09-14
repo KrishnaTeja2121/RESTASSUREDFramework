@@ -36,7 +36,8 @@ public class test {
 		
 		
 		given().log().all().queryParam("key", "qaclick123").header("Content-Type","application/json").body(payload.updatePlace(placeid))
-		.when().put("maps/api/place/update/json").then().assertThat().log().all().statusCode(200).body("ms", equalTo("Address successfully updated"));
+		.when().put("maps/api/place/update/json").then().assertThat().log().all().statusCode(200)
+		.body("msg", equalTo("Address successfully updated"));
 		
 		
 
