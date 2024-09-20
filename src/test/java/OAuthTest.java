@@ -1,7 +1,12 @@
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
+import pojo.GetCourse;
 
 import static io.restassured.RestAssured.*;
+
+import java.util.List;
+
+import com.sun.tools.javac.util.DefinedBy.Api;
 
 public class OAuthTest {
 
@@ -16,6 +21,27 @@ public class OAuthTest {
 		
 		
 		String finalResponse=given().queryParam("accessToken", accessToken).when().get("").asString();
+		
+		
+		
+		///////////////   POJO Class
+		
+		GetCourse courseObj=given().queryParam("access_token", accessToken).when().log().all()
+				.get("https://rahulshettyacademy.com/oAuthApi/getCourseDetails").as(GetCourse.class);
+		
+		System.out.println(courseObj.getLinkedIn());
+		System.out.println(courseObj.getInstructor());
+		
+		courseObj.getCourses().getApi().get(1).getCourseTitle();
+		
+		List<pojo.Api> apiCourse=courseObj.getCourses().getApi();
+		for(int i=0;i<apiCourse.size();i++) {
+			if(apiCourse.get(i).getCourseTitle().equalsIgnoreCase("SoapUI Web Testing")) {
+				System.out.println(apiCourse.get(i).getPrice());
+				
+			}
+		}
+		
 		
 		
 		
